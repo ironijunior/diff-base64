@@ -14,6 +14,9 @@ The diff-base64 solution consists of two domains. The *api* and the *differ*.
 The *api* is responsible for maintaning the objects to be compared, this part contains the public endpoints to be used by the application users.
 The *differ* is the domain responsible for the asynchronous process of object differentiation.
 
+> I decided to use this architecture following the principle of separation of concerns, so I have two separated domains and in the future if needed I can spread them into two microservices to achieve a better scalability.
+> I also tried to apply the DDD techniques in each domain, even the parts being too small.
+
 #### api
 Consist of three endpoints:
 - [POST] - `<host>/v1/diff/<ID>/left`
