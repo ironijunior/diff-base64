@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.Base64;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiffServiceImplTest {
@@ -21,8 +23,10 @@ public class DiffServiceImplTest {
 
     @Test
     public void convertByteArrayToStringTest() {
-        String expected = "This is a string transformed in a byte array.";
-        assertEquals(expected, service.convertByteArrayToString(expected.getBytes()));
+        String str = "This is a string transformed in a byte array.";
+        byte[] arr = Base64.getEncoder().encode(str.getBytes());
+
+        assertEquals(str, service.convertByteArrayToString(arr));
     }
 
     @Test
