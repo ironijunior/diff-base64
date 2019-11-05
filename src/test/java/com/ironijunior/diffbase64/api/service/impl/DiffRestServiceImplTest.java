@@ -1,7 +1,7 @@
 package com.ironijunior.diffbase64.api.service.impl;
 
 import com.ironijunior.diffbase64.api.dto.enumerator.DiffStatus;
-import com.ironijunior.diffbase64.api.event.DiffEventPublisher;
+import com.ironijunior.diffbase64.api.exception.EntityNotFoundException;
 import com.ironijunior.diffbase64.api.exception.SideAlreadyFilledException;
 import com.ironijunior.diffbase64.api.repository.DiffRepository;
 import com.ironijunior.diffbase64.api.service.DiffRestService;
@@ -15,11 +15,18 @@ import java.util.Base64;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 
 public class DiffRestServiceImplTest {
 
+    public static final String VALID_ID = "id";
+    public static final String INVALID_ID = "abc";
+    public static final String DATA = "data";
     private DiffRepository repository = Mockito.mock(DiffRepository.class);
     private DiffRestService service;
+
 
     @BeforeEach
     public void setup() {
@@ -47,49 +54,64 @@ public class DiffRestServiceImplTest {
 
     @Test
     public void savingAnEmptyStringOnLeftTest() {
-        DifferedData data = new DifferedData("id");
-        Mockito.when(repository.findById(Mockito.anyString()))
+        DifferedData data = new DifferedData(VALID_ID);
+        Mockito.when(repository.findById(anyString()))
                 .thenReturn(Optional.of(data));
-        Mockito.when(repository.save(Mockito.any()))
+        Mockito.when(repository.save(any()))
                 .thenReturn(data);
 
-        Assertions.assertTrue(service.saveLeft("id", ""));
+        Assertions.assertTrue(service.saveLeft(VALID_ID, ""));
     }
 
     @Test
     public void savingAnEmptyStringOnRightTest() {
-        DifferedData data = new DifferedData("id");
-        Mockito.when(repository.findById(Mockito.anyString()))
+        DifferedData data = new DifferedData(VALID_ID);
+        Mockito.when(repository.findById(anyString()))
                 .thenReturn(Optional.of(data));
-        Mockito.when(repository.save(Mockito.any()))
+        Mockito.when(repository.save(any()))
                 .thenReturn(data);
 
-        Assertions.assertTrue(service.saveRight("id", ""));
+        Assertions.assertTrue(service.saveRight(VALID_ID, ""));
     }
 
     @Test
     public void savingCompleteTest() {
-        DifferedData data = new DifferedData("id");
-        Mockito.when(repository.findById(Mockito.anyString()))
+        DifferedData data = new DifferedData(VALID_ID);
+        Mockito.when(repository.findById(anyString()))
                 .thenReturn(Optional.of(data));
-        Mockito.when(repository.save(Mockito.any()))
+        Mockito.when(repository.save(any()))
                 .thenReturn(data);
 
-        Assertions.assertTrue(service.saveLeft("id", "value"));
+        Assertions.assertTrue(service.saveLeft(VALID_ID, DATA));
     }
 
     @Test
     public void savingAnAlreadyFilledSide() {
         DifferedData data = DifferedData.builder()
-            .id("id")
-            .left("data")
+            .id(VALID_ID)
+            .left(DATA)
             .status(DiffStatus.NO_DIFF.getText())
             .build();
 
-        Mockito.when(repository.findById(Mockito.anyString()))
+        Mockito.when(repository.findById(anyString()))
                 .thenReturn(Optional.of(data));
 
         Assertions.assertThrows(SideAlreadyFilledException.class,
-                () -> service.saveLeft("id", "data"));
+                () -> service.saveLeft(VALID_ID, DATA));
+    }
+
+    @Test
+    public void savingAnInexistentIdTest() {
+        Mockito.when(repository.findById(eq(INVALID_ID)))
+                .thenThrow(EntityNotFoundException.class);
+
+        Assertions.assertThrows(EntityNotFoundException.class,
+                () -> service.saveLeft(INVALID_ID, DATA));
+    }
+
+    @Test
+    public void savingANullIdTest() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> service.saveLeft(null, DATA));
     }
 }
