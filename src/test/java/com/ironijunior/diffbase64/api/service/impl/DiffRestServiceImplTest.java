@@ -1,5 +1,6 @@
 package com.ironijunior.diffbase64.api.service.impl;
 
+import com.ironijunior.diffbase64.api.event.DiffEventPublisher;
 import com.ironijunior.diffbase64.domain.enumerator.DiffStatus;
 import com.ironijunior.diffbase64.api.exception.EntityNotFoundException;
 import com.ironijunior.diffbase64.api.exception.SideAlreadyFilledException;
@@ -25,13 +26,14 @@ public class DiffRestServiceImplTest {
     public static final String VALID_ID = "id";
     public static final String INVALID_ID = "abc";
     public static final String DATA = "data";
-    private DiffRepository repository = Mockito.mock(DiffRepository.class);
-    private DiffRestService service;
 
+    private DiffRepository repository = Mockito.mock(DiffRepository.class);
+    private DiffEventPublisher publisher = Mockito.mock(DiffEventPublisher.class);
+    private DiffRestService service;
 
     @BeforeEach
     public void setup() {
-        service = new DiffRestServiceImpl(repository);
+        service = new DiffRestServiceImpl(repository, publisher);
     }
 
     @Test

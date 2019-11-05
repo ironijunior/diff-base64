@@ -1,5 +1,7 @@
 package com.ironijunior.diffbase64.api.service.impl;
 
+import com.ironijunior.diffbase64.api.event.DiffEvent;
+import com.ironijunior.diffbase64.api.event.DiffEventPublisher;
 import com.ironijunior.diffbase64.domain.enumerator.DiffSide;
 import com.ironijunior.diffbase64.api.exception.EntityNotFoundException;
 import com.ironijunior.diffbase64.api.exception.SideAlreadyFilledException;
@@ -18,10 +20,12 @@ import java.util.Optional;
 public class DiffRestServiceImpl implements DiffRestService {
 
     private DiffRepository diffRepository;
+    private DiffEventPublisher diffEventPublisher;
 
     @Autowired
-    public DiffRestServiceImpl(DiffRepository repository) {
+    public DiffRestServiceImpl(DiffRepository repository, DiffEventPublisher publisher) {
         this.diffRepository = repository;
+        this.diffEventPublisher = publisher;
     }
 
     @Override
@@ -88,6 +92,6 @@ public class DiffRestServiceImpl implements DiffRestService {
     }
 
     private void sendToDiffer(DifferedData data) {
-        //TODO: call comparer
+        diffEventPublisher.publish(new DiffEvent(this, data));
     }
 }
