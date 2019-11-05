@@ -1,11 +1,11 @@
 package com.ironijunior.diffbase64.api.service.impl;
 
-import com.ironijunior.diffbase64.api.dto.enumerator.DiffStatus;
+import com.ironijunior.diffbase64.domain.enumerator.DiffStatus;
 import com.ironijunior.diffbase64.api.exception.EntityNotFoundException;
 import com.ironijunior.diffbase64.api.exception.SideAlreadyFilledException;
 import com.ironijunior.diffbase64.api.repository.DiffRepository;
 import com.ironijunior.diffbase64.api.service.DiffRestService;
-import com.ironijunior.diffbase64.domain.DifferedData;
+import com.ironijunior.diffbase64.domain.entity.DifferedData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

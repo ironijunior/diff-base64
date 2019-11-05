@@ -1,6 +1,6 @@
 package com.ironijunior.diffbase64.api.repository;
 
-import com.ironijunior.diffbase64.domain.DifferedData;
+import com.ironijunior.diffbase64.domain.entity.DifferedData;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

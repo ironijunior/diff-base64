@@ -1,6 +1,6 @@
 package com.ironijunior.diffbase64.api.exception;
 
-import com.ironijunior.diffbase64.api.dto.enumerator.DiffSide;
+import com.ironijunior.diffbase64.domain.enumerator.DiffSide;
 
 public class SideAlreadyFilledException extends RuntimeException {
 

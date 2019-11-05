@@ -1,4 +1,4 @@
-package com.ironijunior.diffbase64.api.dto.enumerator;
+package com.ironijunior.diffbase64.domain.enumerator;
 
 public enum DiffStatus {
 

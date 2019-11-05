@@ -1,6 +1,6 @@
 package com.ironijunior.diffbase64.api.service;
 
-import com.ironijunior.diffbase64.domain.DifferedData;
+import com.ironijunior.diffbase64.domain.entity.DifferedData;
 
 /***
  *

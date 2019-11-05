@@ -1,6 +1,6 @@
-package com.ironijunior.diffbase64.domain;
+package com.ironijunior.diffbase64.domain.entity;
 
-import com.ironijunior.diffbase64.api.dto.enumerator.DiffStatus;
+import com.ironijunior.diffbase64.domain.enumerator.DiffStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
