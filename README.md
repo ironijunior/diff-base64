@@ -11,9 +11,9 @@ This solution is used to differ two JSON base64 encoded binary data.
 - **Docker**: for containerizing the solution
 
 ### Architecture
-The diff-base64 solution consists of two parts. The *api* and the *differ*.
+The diff-base64 solution consists of two domains. The *api* and the *differ*.
 The *api* is responsible for maintaning the objects to be compared, this part contains the public endpoints to be used by the application users.
-The *differ* is the step responsible for the asynchronous process of object differentiation.
+The *differ* is the domain responsible for the asynchronous process of object differentiation.
 
 #### api
 Consist of three endpoints:
