@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 
 public class DiffRestServiceImplTest {
 
@@ -113,5 +114,37 @@ public class DiffRestServiceImplTest {
     public void savingANullIdTest() {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> service.saveLeft(null, DATA));
+    }
+
+    @Test
+    public void gettingDifferedDataFromValidIdTest() {
+        DifferedData data = DifferedData.builder()
+                .id(VALID_ID)
+                .left(DATA)
+                .status(DiffStatus.NO_DIFF.getText())
+                .build();
+
+        Mockito.when(repository.findById(anyString()))
+                .thenReturn(Optional.of(data));
+
+        Assertions.assertEquals(data, service.getById(VALID_ID));
+    }
+
+    @Test
+    public void gettingDifferedDataFromNullIdTest() {
+        Mockito.when(repository.findById(isNull()))
+                .thenThrow(IllegalArgumentException.class);
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> service.getById(null));
+    }
+
+    @Test
+    public void gettingDifferedDataFromInvalidIdTest() {
+        Mockito.when(repository.findById(eq(INVALID_ID)))
+                .thenThrow(EntityNotFoundException.class);
+
+        Assertions.assertThrows(EntityNotFoundException.class,
+                () -> service.getById(INVALID_ID));
     }
 }
