@@ -19,12 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DiffRestServiceImplTest {
 
     private DiffRepository repository = Mockito.mock(DiffRepository.class);
-    private DiffEventPublisher publisher = Mockito.mock(DiffEventPublisher.class);
     private DiffRestService service;
 
     @BeforeEach
     public void setup() {
-        service = new DiffRestServiceImpl(repository, publisher);
+        service = new DiffRestServiceImpl(repository);
     }
 
     @Test
