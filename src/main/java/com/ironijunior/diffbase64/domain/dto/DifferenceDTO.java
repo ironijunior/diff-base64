@@ -9,6 +9,6 @@ public class DifferenceDTO {
 
     private Long initialOffset;
     private Long finalOffset;
-    private Long lenght;
+    private Long length;
 
 }

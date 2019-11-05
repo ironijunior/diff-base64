@@ -23,7 +23,7 @@ public class DiffResponseDTO {
                                 .map(diff -> DifferenceDTO.builder()
                                         .initialOffset(diff.getInitialOffset())
                                         .finalOffset(diff.getFinalOffset())
-                                        .lenght(diff.getLenght())
+                                        .length(diff.getLength())
                                         .build())
                                 .collect(Collectors.toList())
                 )

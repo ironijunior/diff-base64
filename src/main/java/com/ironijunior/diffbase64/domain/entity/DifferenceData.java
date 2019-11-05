@@ -13,5 +13,5 @@ public class DifferenceData {
 
     private Long initialOffset;
     private Long finalOffset;
-    private Long lenght;
+    private Long length;
 }
