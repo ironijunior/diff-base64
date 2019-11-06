@@ -39,11 +39,11 @@ This endpoint is not responsible for realizing the comparison. The diff process 
   - Possible results are:
     - if the objects are equals than returns:
     ```json
-    {"result" : "Objects are equals"}
+    {"status" : "Objects are equals"}
     ```
     - if the objects are *not* equals on size than returns:
     ```json
-    {"result" : "Objects are different in size"}
+    {"status" : "Objects are different in size"}
     ```
     - if the objects are same size but different content, provides insight in where the diffs are:
     ```json
