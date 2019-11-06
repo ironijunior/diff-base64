@@ -73,25 +73,21 @@ the Events and the CompletableFuture to a message broker (RabbitMQ, Kafka, etc).
 - integration tests: Spring Boot Test
 
 
-### How to run
+## How to run
+The application can be executed in two ways:
+- running with Docker (recommended) 
+- running with Maven
 
-#### Unit tests and Integration tests
+##### running with Docker
+- requirement: Docker
 ```sh
-~: cd diff-base64
-~: mvn clean test
+~/diff-base64: docker-compose up
 ```
 
-#### Running
+##### running with Maven
+- requirement: JDK 11 + Mongo instance
 ```sh
-~: cd diff-base64
-~: mvn springboot:run
-```
-
-#### Container
-This application could be containerized using the `docker-compose.yml` file in the root project. To do it, run:
-```sh
-~: cd diff-base64
-~: <add docker command>
+~/diff-base64: mvn spring-boot:run
 ```
 
 ### Improvements
