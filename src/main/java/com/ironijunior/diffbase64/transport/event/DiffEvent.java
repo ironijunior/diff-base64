@@ -1,6 +1,6 @@
-package com.ironijunior.diffbase64.api.event;
+package com.ironijunior.diffbase64.transport.event;
 
-import com.ironijunior.diffbase64.domain.entity.DifferedData;
+import com.ironijunior.diffbase64.domain.DifferedData;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

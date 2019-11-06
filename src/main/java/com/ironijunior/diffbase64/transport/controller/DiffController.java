@@ -1,7 +1,7 @@
-package com.ironijunior.diffbase64.api.controller;
+package com.ironijunior.diffbase64.transport.controller;
 
-import com.ironijunior.diffbase64.domain.dto.DiffResponseDTO;
-import com.ironijunior.diffbase64.api.service.DiffRestService;
+import com.ironijunior.diffbase64.transport.dto.DiffResponseDTO;
+import com.ironijunior.diffbase64.service.DiffRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

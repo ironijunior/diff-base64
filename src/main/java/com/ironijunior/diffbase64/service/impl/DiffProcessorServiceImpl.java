@@ -1,9 +1,9 @@
-package com.ironijunior.diffbase64.api.service.impl;
+package com.ironijunior.diffbase64.service.impl;
 
-import com.ironijunior.diffbase64.api.repository.DiffRepository;
-import com.ironijunior.diffbase64.api.service.DiffProcessorService;
-import com.ironijunior.diffbase64.domain.entity.DifferedData;
-import com.ironijunior.diffbase64.domain.entity.DifferenceData;
+import com.ironijunior.diffbase64.transport.repository.DiffRepository;
+import com.ironijunior.diffbase64.service.DiffProcessorService;
+import com.ironijunior.diffbase64.domain.DifferedData;
+import com.ironijunior.diffbase64.domain.DifferenceData;
 import com.ironijunior.diffbase64.domain.enumerator.DiffStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.ironijunior.diffbase64.api.exception;
+package com.ironijunior.diffbase64.domain.exception;
 
 public class EntityNotFoundException extends RuntimeException {
 

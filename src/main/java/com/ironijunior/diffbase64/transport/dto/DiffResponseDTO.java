@@ -1,6 +1,6 @@
-package com.ironijunior.diffbase64.domain.dto;
+package com.ironijunior.diffbase64.transport.dto;
 
-import com.ironijunior.diffbase64.domain.entity.DifferedData;
+import com.ironijunior.diffbase64.domain.DifferedData;
 import lombok.Builder;
 import lombok.Data;
 

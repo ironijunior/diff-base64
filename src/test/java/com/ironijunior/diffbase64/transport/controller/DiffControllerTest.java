@@ -1,10 +1,10 @@
-package com.ironijunior.diffbase64.api.controller;
+package com.ironijunior.diffbase64.transport.controller;
 
-import com.ironijunior.diffbase64.domain.dto.DiffResponseDTO;
+import com.ironijunior.diffbase64.transport.dto.DiffResponseDTO;
 import com.ironijunior.diffbase64.domain.enumerator.DiffStatus;
-import com.ironijunior.diffbase64.api.exception.EntityNotFoundException;
-import com.ironijunior.diffbase64.api.service.DiffRestService;
-import com.ironijunior.diffbase64.domain.entity.DifferedData;
+import com.ironijunior.diffbase64.domain.exception.EntityNotFoundException;
+import com.ironijunior.diffbase64.service.DiffRestService;
+import com.ironijunior.diffbase64.domain.DifferedData;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

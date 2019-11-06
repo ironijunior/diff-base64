@@ -1,4 +1,4 @@
-package com.ironijunior.diffbase64.domain.dto;
+package com.ironijunior.diffbase64.transport.dto;
 
 import lombok.Builder;
 import lombok.Data;

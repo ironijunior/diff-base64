@@ -1,13 +1,13 @@
-package com.ironijunior.diffbase64.api.service.impl;
+package com.ironijunior.diffbase64.service.impl;
 
-import com.ironijunior.diffbase64.api.event.DiffEvent;
-import com.ironijunior.diffbase64.api.event.DiffEventPublisher;
+import com.ironijunior.diffbase64.transport.event.DiffEvent;
+import com.ironijunior.diffbase64.transport.event.DiffEventPublisher;
 import com.ironijunior.diffbase64.domain.enumerator.DiffSide;
-import com.ironijunior.diffbase64.api.exception.EntityNotFoundException;
-import com.ironijunior.diffbase64.api.exception.SideAlreadyFilledException;
-import com.ironijunior.diffbase64.api.repository.DiffRepository;
-import com.ironijunior.diffbase64.api.service.DiffRestService;
-import com.ironijunior.diffbase64.domain.entity.DifferedData;
+import com.ironijunior.diffbase64.domain.exception.EntityNotFoundException;
+import com.ironijunior.diffbase64.domain.exception.SideAlreadyFilledException;
+import com.ironijunior.diffbase64.transport.repository.DiffRepository;
+import com.ironijunior.diffbase64.service.DiffRestService;
+import com.ironijunior.diffbase64.domain.DifferedData;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

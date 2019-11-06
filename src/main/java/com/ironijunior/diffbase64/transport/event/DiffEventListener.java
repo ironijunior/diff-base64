@@ -1,6 +1,6 @@
-package com.ironijunior.diffbase64.api.event;
+package com.ironijunior.diffbase64.transport.event;
 
-import com.ironijunior.diffbase64.api.service.DiffProcessorService;
+import com.ironijunior.diffbase64.service.DiffProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

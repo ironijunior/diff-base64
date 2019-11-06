@@ -1,6 +1,6 @@
-package com.ironijunior.diffbase64.api.service;
+package com.ironijunior.diffbase64.service;
 
-import com.ironijunior.diffbase64.domain.entity.DifferedData;
+import com.ironijunior.diffbase64.domain.DifferedData;
 
 /**
  * Service class responsible for doing the diff process between
