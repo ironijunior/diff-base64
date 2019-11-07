@@ -9,6 +9,8 @@ import com.ironijunior.diffbase64.transport.repository.DiffRepository;
 import com.ironijunior.diffbase64.service.DiffRestService;
 import com.ironijunior.diffbase64.domain.DifferedData;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ import java.util.Optional;
 
 @Service
 public class DiffRestServiceImpl implements DiffRestService {
+
+    private static final Logger logger = LoggerFactory.getLogger(DiffRestServiceImpl.class);
 
     private DiffRepository diffRepository;
     private DiffEventPublisher diffEventPublisher;
@@ -30,6 +34,7 @@ public class DiffRestServiceImpl implements DiffRestService {
 
     @Override
     public String convertByteArrayToString(byte[] arr) {
+        logger.info("Converting and decoding body");
         if (Objects.isNull(arr)) {
             throw new IllegalArgumentException();
         }
@@ -52,6 +57,8 @@ public class DiffRestServiceImpl implements DiffRestService {
     }
 
     private boolean save(String id, String value, DiffSide side) {
+        logger.info("Saving the {} side of the id {}", side, id);
+
         DifferedData diffById = getById(id, true);
         if (isSideAlreadyFilled(diffById, side)) {
             throw new SideAlreadyFilledException(side);
@@ -92,6 +99,7 @@ public class DiffRestServiceImpl implements DiffRestService {
     }
 
     private void sendToDiffer(DifferedData data) {
+        logger.info("Publishing event to start the diff process");
         diffEventPublisher.publish(new DiffEvent(this, data));
     }
 }

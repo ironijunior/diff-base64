@@ -1,6 +1,8 @@
 package com.ironijunior.diffbase64.transport.event;
 
 import com.ironijunior.diffbase64.service.DiffProcessorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -18,6 +20,8 @@ import java.util.concurrent.Executors;
 @Component
 public class DiffEventListener implements ApplicationListener<DiffEvent> {
 
+    private static final Logger logger = LoggerFactory.getLogger(DiffEventListener.class);
+
     private final Executor threadPool = Executors.newCachedThreadPool();
     private DiffProcessorService diffProcessorService;
 
@@ -28,6 +32,7 @@ public class DiffEventListener implements ApplicationListener<DiffEvent> {
 
     @Override
     public void onApplicationEvent(DiffEvent event) {
+        logger.info("Event for diff process received. Scheduling to async process");
         CompletableFuture.runAsync(
                 () -> diffProcessorService.diffSides(event.getDiffData()),
                 threadPool);

@@ -5,6 +5,8 @@ import com.ironijunior.diffbase64.service.DiffProcessorService;
 import com.ironijunior.diffbase64.domain.DifferedData;
 import com.ironijunior.diffbase64.domain.DifferenceData;
 import com.ironijunior.diffbase64.domain.enumerator.DiffStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @Service
 public class DiffProcessorServiceImpl implements DiffProcessorService {
 
+    private static final Logger logger = LoggerFactory.getLogger(DiffProcessorServiceImpl.class);
     private DiffRepository diffRepository;
 
     @Autowired
@@ -27,6 +30,8 @@ public class DiffProcessorServiceImpl implements DiffProcessorService {
 
     @Override
     public DifferedData diffSides(DifferedData data) {
+        logger.info("Starting the diff process for the diff id {}", data.getId());
+
         DifferedData.DifferedDataBuilder diffBuilder = DifferedData.builder()
                 .id(data.getId())
                 .left(data.getLeft())
