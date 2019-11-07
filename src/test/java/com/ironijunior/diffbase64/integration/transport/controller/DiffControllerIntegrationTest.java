@@ -1,5 +1,6 @@
 package com.ironijunior.diffbase64.integration.transport.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ public class DiffControllerIntegrationTest {
                     post(String.format(LEFT_API, ScenariosConstants.EQUAL_ID))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(Base64.getEncoder().encode(ScenariosConstants.EQUAL_DATA.getBytes())))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(StringUtils.EMPTY))
                 .andExpect(status().isCreated());
     }
 
@@ -48,7 +49,7 @@ public class DiffControllerIntegrationTest {
                     post(String.format(RIGHT_API, ScenariosConstants.EQUAL_ID))
                     .contentType(MediaType.ALL_VALUE)
                     .content(Base64.getEncoder().encode(ScenariosConstants.EQUAL_DATA.getBytes())))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(StringUtils.EMPTY))
                 .andExpect(status().isCreated());
     }
 
@@ -59,7 +60,7 @@ public class DiffControllerIntegrationTest {
                 post(String.format(LEFT_API, ScenariosConstants.DIFFERENT_SIZE_ID))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(Base64.getEncoder().encode(ScenariosConstants.DIFFERENT_SIZE_LEFT_DATA.getBytes())))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(StringUtils.EMPTY))
                 .andExpect(status().isCreated());
     }
 
@@ -70,7 +71,7 @@ public class DiffControllerIntegrationTest {
                 post(String.format(RIGHT_API, ScenariosConstants.DIFFERENT_SIZE_ID))
                         .contentType(MediaType.ALL_VALUE)
                         .content(Base64.getEncoder().encode(ScenariosConstants.DIFFERENT_SIZE_RIGHT_DATA.getBytes())))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(StringUtils.EMPTY))
                 .andExpect(status().isCreated());
     }
 
@@ -81,7 +82,7 @@ public class DiffControllerIntegrationTest {
                 post(String.format(LEFT_API, ScenariosConstants.DIFFERENT_ID))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(Base64.getEncoder().encode(ScenariosConstants.DIFFERENT_LEFT_DATA.getBytes())))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(StringUtils.EMPTY))
                 .andExpect(status().isCreated());
     }
 
@@ -92,7 +93,7 @@ public class DiffControllerIntegrationTest {
                 post(String.format(RIGHT_API, ScenariosConstants.DIFFERENT_ID))
                         .contentType(MediaType.ALL_VALUE)
                         .content(Base64.getEncoder().encode(ScenariosConstants.DIFFERENT_RIGHT_DATA.getBytes())))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(StringUtils.EMPTY))
                 .andExpect(status().isCreated());
     }
 
