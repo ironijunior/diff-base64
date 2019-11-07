@@ -142,7 +142,7 @@ public class DiffControllerIntegrationTest {
         mockMvc.perform(
                 get(String.format(DIFF_API, "xxx")))
                 .andExpect(status().isNotFound())
-                .andExpect(content().json("{\"status\":404,\"message\":\"There is no data with the identifier xxx\"}", true));
+                .andExpect(content().json("{\"status\":404,\"message\":\"There is no data with the identifier xxx.\"}", true));
     }
 
     @Order(11)
