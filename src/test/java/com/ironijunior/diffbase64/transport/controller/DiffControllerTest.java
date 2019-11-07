@@ -40,7 +40,7 @@ public class DiffControllerTest {
         Mockito.when(service.saveLeft(anyString(), anyString()))
                 .thenReturn(Boolean.TRUE);
 
-        ResponseEntity response = controller.saveLeft(id, arr);
+        ResponseEntity<Void> response = controller.saveLeft(id, arr);
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         Assertions.assertNull(response.getBody());
     }
@@ -52,7 +52,7 @@ public class DiffControllerTest {
         Mockito.when(service.saveRight(anyString(), anyString()))
                 .thenReturn(Boolean.TRUE);
 
-        ResponseEntity response = controller.saveRight(id, arr);
+        ResponseEntity<Void> response = controller.saveRight(id, arr);
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         Assertions.assertNull(response.getBody());
     }
@@ -90,7 +90,7 @@ public class DiffControllerTest {
         Mockito.when(service.getById(anyString()))
                 .thenReturn(data);
 
-        ResponseEntity response = controller.getDiff(id);
+        ResponseEntity<DiffResponseDTO> response = controller.getDiff(id);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertEquals(dto, (DiffResponseDTO)response.getBody());
     }

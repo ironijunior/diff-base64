@@ -26,7 +26,9 @@ import java.util.List;
 @Builder
 public class DifferedData implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -1615025580764206382L;
+	
+	@Id
     @NonNull
     private String id;
     private String left;

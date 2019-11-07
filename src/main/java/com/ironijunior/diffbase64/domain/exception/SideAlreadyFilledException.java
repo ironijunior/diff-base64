@@ -10,7 +10,9 @@ import com.ironijunior.diffbase64.domain.enumerator.DiffSide;
  */
 public class SideAlreadyFilledException extends RuntimeException {
 
-    private static final String MSG = "The side %s is already filled.";
+	private static final long serialVersionUID = -6317606836146142841L;
+	
+	private static final String MSG = "The side %s is already filled.";
 
     /**
      * Constructor that receives the side.

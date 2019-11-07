@@ -3,6 +3,9 @@ package com.ironijunior.diffbase64.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -14,9 +17,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DifferenceData {
+public class DifferenceData implements Serializable {
 
-    private Long initialOffset;
+	private static final long serialVersionUID = -1571970018273304993L;
+	
+	private Long initialOffset;
     private Long finalOffset;
     private Long length;
 }

@@ -8,7 +8,9 @@ package com.ironijunior.diffbase64.domain.exception;
  */
 public class EntityNotFoundException extends RuntimeException {
 
-    private static final String MSG = "There is no data with the identifier %s.";
+	private static final long serialVersionUID = 7923675795818037287L;
+	
+	private static final String MSG = "There is no data with the identifier %s.";
 
     /**
      * Constructor that receives the diff identification.
