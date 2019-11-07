@@ -42,11 +42,7 @@ public class DiffResponseDTO {
     private static List<DifferenceDTO> convertDifferences(DifferedData diffData) {
         return diffData.getDifferences()
                 .stream()
-                .map(diff -> DifferenceDTO.builder()
-                        .initialOffset(diff.getInitialOffset())
-                        .finalOffset(diff.getFinalOffset())
-                        .length(diff.getLength())
-                        .build())
+                .map(DifferenceDTO::convertFromEntity)
                 .collect(Collectors.toList());
     }
 }
