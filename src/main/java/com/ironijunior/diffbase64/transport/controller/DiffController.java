@@ -36,9 +36,10 @@ public class DiffController {
      * @return Response
      */
     @PostMapping("/{id}/left")
-    public ResponseEntity<Boolean> saveLeft(@PathVariable String id, @RequestBody byte[] request) {
+    public ResponseEntity<Void> saveLeft(@PathVariable String id, @RequestBody byte[] request) {
         String data = service.convertByteArrayToString(request);
-        return new ResponseEntity<>(service.saveLeft(id, data), HttpStatus.CREATED);
+        service.saveLeft(id, data);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
@@ -49,9 +50,10 @@ public class DiffController {
      * @return Response
      */
     @PostMapping("/{id}/right")
-    public ResponseEntity<Boolean> saveRight(@PathVariable String id, @RequestBody byte[] request) {
+    public ResponseEntity<Void> saveRight(@PathVariable String id, @RequestBody byte[] request) {
         String data = service.convertByteArrayToString(request);
-        return new ResponseEntity<>(service.saveRight(id, data), HttpStatus.CREATED);
+        service.saveRight(id, data);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**

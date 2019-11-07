@@ -42,7 +42,7 @@ public class DiffControllerTest {
 
         ResponseEntity response = controller.saveLeft(id, arr);
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        Assertions.assertTrue((Boolean)response.getBody());
+        Assertions.assertNull(response.getBody());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class DiffControllerTest {
 
         ResponseEntity response = controller.saveRight(id, arr);
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        Assertions.assertTrue((Boolean)response.getBody());
+        Assertions.assertNull(response.getBody());
     }
 
     @Test
