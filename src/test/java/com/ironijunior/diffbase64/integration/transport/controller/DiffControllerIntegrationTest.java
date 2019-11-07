@@ -54,17 +54,6 @@ public class DiffControllerIntegrationTest {
 
     @Test
     @Order(3)
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    public void gettingDiffEqualTest() throws Exception {
-        mockMvc.perform(
-                get(String.format(DIFF_API, ScenariosConstants.EQUAL_ID)))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("{\"status\" : \"Objects are equals\"}"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    @Order(4)
     public void sendingDifferentSizeDataToLeftSideTest() throws Exception {
         mockMvc.perform(
                 post(String.format(LEFT_API, ScenariosConstants.DIFFERENT_SIZE_ID))
@@ -75,7 +64,7 @@ public class DiffControllerIntegrationTest {
     }
 
     @Test
-    @Order(5)
+    @Order(4)
     public void sendingDifferentSizeDataToRightSideTest() throws Exception {
         mockMvc.perform(
                 post(String.format(RIGHT_API, ScenariosConstants.DIFFERENT_SIZE_ID))
@@ -86,18 +75,7 @@ public class DiffControllerIntegrationTest {
     }
 
     @Test
-    @Order(6)
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    public void gettingDiffDifferentSizeTest() throws Exception {
-        mockMvc.perform(
-                get(String.format(DIFF_API, ScenariosConstants.DIFFERENT_SIZE_ID)))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("{\"status\" : \"Objects are different in size\"}"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    @Order(7)
+    @Order(5)
     public void sendingDifferentDataToLeftSideTest() throws Exception {
         mockMvc.perform(
                 post(String.format(LEFT_API, ScenariosConstants.DIFFERENT_ID))
@@ -108,7 +86,7 @@ public class DiffControllerIntegrationTest {
     }
 
     @Test
-    @Order(8)
+    @Order(6)
     public void sendingDifferentDataToRightSideTest() throws Exception {
         mockMvc.perform(
                 post(String.format(RIGHT_API, ScenariosConstants.DIFFERENT_ID))
@@ -119,8 +97,27 @@ public class DiffControllerIntegrationTest {
     }
 
     @Test
+    @Order(7)
+    public void gettingDiffEqualTest() throws Exception {
+        mockMvc.perform(
+                get(String.format(DIFF_API, ScenariosConstants.EQUAL_ID)))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().json("{\"status\" : \"Objects are equals\"}"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @Order(8)
+    public void gettingDiffDifferentSizeTest() throws Exception {
+        mockMvc.perform(
+                get(String.format(DIFF_API, ScenariosConstants.DIFFERENT_SIZE_ID)))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().json("{\"status\" : \"Objects are different in size\"}"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     @Order(9)
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void gettingDiffDifferentDataTest() throws Exception {
         String expectedJson = "{" +
                 "\"status\":\"Objects are different\"" +
@@ -147,6 +144,7 @@ public class DiffControllerIntegrationTest {
 
     @Order(11)
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void sendingAlreadyExistentSideTest() throws Exception {
         mockMvc.perform(
                 post(String.format(LEFT_API, ScenariosConstants.EQUAL_ID))
