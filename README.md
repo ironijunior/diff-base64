@@ -1,6 +1,23 @@
 # diff-base64
 This solution is used to differ two JSON base64 encoded binary data.
 
+## How to run
+The application can be executed in two ways:
+- running with Docker (recommended) 
+- running with Maven
+
+### running with Docker
+- requirement: Docker
+```sh
+~/diff-base64: docker-compose up
+```
+
+### running with Maven
+- requirement: JDK 11 + Mongo instance
+```sh
+~/diff-base64: mvn spring-boot:run
+```
+
 ## Tech aspects
 
 ### Stack
@@ -72,26 +89,10 @@ the Events and the CompletableFuture to a message broker (RabbitMQ, Kafka, etc).
 - unit tests: JUnit + Mockito
 - integration tests: Spring Boot Test
 
-
-## How to run
-The application can be executed in two ways:
-- running with Docker (recommended) 
-- running with Maven
-
-##### running with Docker
-- requirement: Docker
-```sh
-~/diff-base64: docker-compose up
-```
-
-##### running with Maven
-- requirement: JDK 11 + Mongo instance
-```sh
-~/diff-base64: mvn spring-boot:run
-```
-
 ### Improvements
 There are some points that would be nice to improve:
-- 
-- 
-- 
+- add endpoint to force diff process, like `POST -> /v1/diff/<ID>`
+- add endpoints to update sides, like `PUT -> /v1/diff/<ID>/left` and `PUT -> /v1/diff/<ID>/right`
+- add i18n
+- test obvious scenarios for endpoints (method now allowed, 404 on wrong endpoints, ...)
+- improve debug logs
