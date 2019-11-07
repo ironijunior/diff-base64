@@ -29,14 +29,12 @@ The application can be executed in two ways:
 - **Docker**: for containerizing the solution
 
 ### Architecture
-This solution was divided following DDD principles in order to isolate the business rules, the domain and the transport 
+This solution was structured following DDD principles in order to isolate the business rules, the domain and the transport 
 (also called infrastructure) layers.
 
 - In the `domain` layer we have the objects that address our business domain.
-- In the `service` one we have the business rules implementation of our solution. In this case, 
-one responsible for the rules of our api and other responsible for the comparison.
-- The `transport` layer is where are the objects that represent the infrastructure of our application. This layer must 
-be highly dissociated from our business and should be easy to replace.
+- In the `service` one we have the business rules implementation of our solution.
+- The `transport` layer is where are the objects that represent the infrastructure of our application.
 
 #### API
 The **diff-base64** api consists of three endpoints:
@@ -72,6 +70,10 @@ This endpoint is not responsible for realizing the comparison. The diff process 
           "length": 1
       }]
     }
+    ```
+    - if the diff do not have a result yet:
+    ```json
+    {"status" : "Objects are not checked yet"}
     ```
 
 #### DiffProcessor
