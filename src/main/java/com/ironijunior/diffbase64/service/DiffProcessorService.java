@@ -5,6 +5,8 @@ import com.ironijunior.diffbase64.domain.DifferedData;
 /**
  * Service class responsible for doing the diff process between
  * the left and right values.
+ *
+ * @author Ironi Junior Medina
  */
 public interface DiffProcessorService {
 

@@ -13,6 +13,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This class represents database entity of the diff.
+ *
+ * @author Ironi Junior Medina
+ */
 @Document
 @Data
 @NoArgsConstructor

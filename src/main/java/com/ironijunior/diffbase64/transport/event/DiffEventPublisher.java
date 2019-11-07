@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * This class publishes the {@link DiffEvent} to the Spring Application Context.
  *
+ * @author Ironi Junior Medina
  */
 @Component
 public class DiffEventPublisher implements ApplicationEventPublisherAware {

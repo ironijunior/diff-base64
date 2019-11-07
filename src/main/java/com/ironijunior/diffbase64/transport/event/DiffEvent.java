@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationEvent;
  * When this event is published the listener will
  * process the diff between left and right side
  * of {@code diffData} object.
+ *
+ * @author Ironi Junior Medina
  */
 @Getter
 public class DiffEvent extends ApplicationEvent {

@@ -5,6 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * This class represents database entity of the differences.
+ *
+ * @author Ironi Junior Medina
+ */
 @Document
 @Data
 @NoArgsConstructor

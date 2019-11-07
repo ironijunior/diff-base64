@@ -70,8 +70,8 @@ public class DiffRestServiceImpl implements DiffRestService {
             diffById.setLeft(value);
         }
         DifferedData savedData = diffRepository.save(diffById);
-        if (isComplete(savedData)) {
-            sendToDiffer(savedData);
+        if (isBothSideFilled(savedData)) {
+            sendToDifferProcessor(savedData);
         }
         return true;
     }
@@ -93,12 +93,12 @@ public class DiffRestServiceImpl implements DiffRestService {
         return optData.orElseThrow(() -> new EntityNotFoundException(id));
     }
 
-    private boolean isComplete(DifferedData data) {
+    private boolean isBothSideFilled(DifferedData data) {
         return Objects.nonNull(data.getLeft())
                 && Objects.nonNull(data.getRight());
     }
 
-    private void sendToDiffer(DifferedData data) {
+    private void sendToDifferProcessor(DifferedData data) {
         logger.info("Publishing event to start the diff process");
         diffEventPublisher.publish(new DiffEvent(this, data));
     }

@@ -16,6 +16,8 @@ import java.util.concurrent.Executors;
  *
  * When the event is received by this listener it will send to the
  * process responsible for the comparison between left and right values.
+ *
+ * @author Ironi Junior Medina
  */
 @Component
 public class DiffEventListener implements ApplicationListener<DiffEvent> {

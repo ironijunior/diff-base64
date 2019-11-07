@@ -13,11 +13,25 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.Locale;
 
+/**
+ * Class responsible for generating the error response in case of exceptions.
+ * It transforms the exception in a {@link ErrorResponseDTO} object.
+ *
+ * @author Ironi Junior Medina
+ */
 @ControllerAdvice
 public class DiffControllerExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(DiffControllerExceptionHandler.class);
 
+    /**
+     * Handle the {@link EntityNotFoundException} exception and transform to
+     * {@link ErrorResponseDTO}.
+     *
+     * @param ex {@link EntityNotFoundException} class
+     * @param locale {@link Locale} object. Could be used to internationalization
+     * @return {@link ErrorResponseDTO}
+     */
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ResponseBody
@@ -25,6 +39,14 @@ public class DiffControllerExceptionHandler {
         return createAndLogErrorResponse(ex, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Handle the {@link SideAlreadyFilledException} exception and transform to
+     * {@link ErrorResponseDTO}.
+     *
+     * @param ex {@link SideAlreadyFilledException} class
+     * @param locale {@link Locale} object. Could be used to internationalization
+     * @return {@link ErrorResponseDTO}
+     */
     @ExceptionHandler(SideAlreadyFilledException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -32,6 +54,14 @@ public class DiffControllerExceptionHandler {
         return createAndLogErrorResponse(ex, HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * Handle the {@link Exception} exception and transform to
+     * {@link ErrorResponseDTO}.
+     *
+     * @param ex {@link Exception} class
+     * @param locale {@link Locale} object. Could be used to internationalization
+     * @return {@link ErrorResponseDTO}
+     */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
