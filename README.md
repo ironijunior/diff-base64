@@ -21,8 +21,8 @@ The application can be executed in two ways:
 ## Tech aspects
 
 ### Stack
-- **Java 11**: latest Java long term version
-- **Spring Boot**: for a quick implementation start-up
+- **Java 11**: latest Java long term support version
+- **Spring Boot**: for a quick implementation
 - **MongoDB**: document oriented NoSql database, for data storage
 - **Lombok**: for helping with the boilerplate code on POJO objects
 - **Maven**: building, packaging, dependency management
@@ -77,15 +77,15 @@ This endpoint is not responsible for realizing the comparison. The diff process 
     ```
 
 #### DiffProcessor
-Comparison process among both sides of the object.
-When the `left` or `right` endpoint receives data it will check if the other side already have data as well, if so then 
+It is the comparison process among both sides of the object.
+
+When `left` or `right` endpoint receives data it will check if the other side already have data as well, if so then 
 an event will be published to the Spring Application Context, and then consumed by the `ApplicationListener`
 and processed by the `DiffProcessor`.
 The `DiffProcessor` runs the process of comparison asynchronously using `CompletableFuture`.
 
 The idea of using Spring Application Context and `CompletableFuture` is to have a pre visualization on how the 
-solution would behave using a distributed architecture. In the future we could migrate
-the Events and the CompletableFuture to a message broker (RabbitMQ, Kafka, etc).
+solution would behave using a distributed architecture.
 
 ### Testing
 - unit tests: JUnit + Mockito
@@ -95,6 +95,7 @@ the Events and the CompletableFuture to a message broker (RabbitMQ, Kafka, etc).
 There are some points that would be nice to improve:
 - add endpoint to force diff process, like `POST -> /v1/diff/<ID>`
 - add endpoints to update sides, like `PUT -> /v1/diff/<ID>/left` and `PUT -> /v1/diff/<ID>/right`
-- add i18n
-- test obvious scenarios for endpoints (method now allowed, 404 on wrong endpoints, ...)
+- add i18n for exceptions
+- ~~test obvious scenarios for endpoints (method now allowed, 404 on wrong endpoints, ...)~~
 - improve debug logs
+- apply ports & adapters architecture to turn the business language agnostic 
