@@ -13,4 +13,5 @@ public final class ScenariosConstants {
     public static final String DIFFERENT_LEFT_DATA = "{\"key\":\"words are the same but different order\"}";
     public static final String DIFFERENT_RIGHT_DATA = "{\"key\":\"order the are same different words but\"}";
 
+    public static final String ALREADY_EXIST_SIDE_ID = "side";
 }
