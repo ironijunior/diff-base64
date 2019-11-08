@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.Locale;
 
@@ -20,7 +21,7 @@ import java.util.Locale;
  * @author Ironi Junior Medina
  */
 @ControllerAdvice
-public class DiffControllerExceptionHandler {
+public class DiffControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(DiffControllerExceptionHandler.class);
 
