@@ -1,5 +1,7 @@
-FROM openjdk:11-oracle
+FROM maven:3.6.2-jdk-11
 LABEL maintainer="ironimedina@gmail.com"
-COPY target/diff-base64.jar diff-base64.jar
+COPY . /usr/src/app
+WORKDIR /usr/src/app
+RUN mvn clean package --batch-mode
 EXPOSE 8080
-CMD ["java", "-jar", "./diff-base64.jar"]
+ENTRYPOINT ["java", "-jar", "target/diff-base64.jar"]
